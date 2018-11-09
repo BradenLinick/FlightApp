@@ -13,10 +13,18 @@ class App extends React.Component {
     this.state = {
       departure: 'PRG',
       arrival: 'LGW'
-    }
-
-    
+    }    
   }
+
+  handleDepartureChange(e) {
+    this.setState({departure: e.target.value})
+    console.log(departure);
+  }
+
+  handleArrivalChange(e) {
+    this.setState({arrival: e.target.value})
+  }
+
   render() {
     return (
       <div>
