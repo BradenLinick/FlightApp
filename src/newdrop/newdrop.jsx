@@ -1,11 +1,12 @@
 import React from 'react';
 import Select from 'react-select';
 import './newdrop.css';
+import { DateTime } from 'luxon';
 
 const departure = [
-  { value: 'NYC', label: 'New York' },
+  { value: 'BKK', label: 'Bangkok' },
   { value: 'PRG', label: 'Prague' },
-  { value: 'LND', label: 'London' }
+  { value: 'VLC', label: 'Valencia' }
 ];
 
 const arrival = [
@@ -42,6 +43,10 @@ export default class Newdrop extends React.Component {
     this.setState({ selectedArr });
     console.log(`Option selected:`, selectedArr);
   }
+
+  toTime(seconds) {
+    return DateTime.fromMillis(seconds * 1000).toFormat('hh:mm');
+  }
   render() {
     const { selectedDep, selectedArr } = this.state;
 
@@ -60,12 +65,12 @@ export default class Newdrop extends React.Component {
       <button onClick={() => this.handleFlightSearch(this.state.selectedDep.value, this.state.selectedArr.value)}>Select flights</button>
       <div className="table">
       {this.state.flightsArray.map(flights => 
-        <div className="row">
+        <div key={flights.id} className="row">
         <div className="item">Departure: {flights.flyFrom} </div>
         <div className="item">Arrival: {flights.flyTo}</div>
-        <div className="item">Departure time: {flights.dTime}</div>
-        <div className="item">Arrival time (local): {flights.aTime}</div>
-        <div className="item">Cost: {flights.price}</div>
+        <div className="item">Departure time: {this.toTime(flights.dTime)}</div>
+        <div className="item">Arrival time (local): {this.toTime(flights.aTime)}</div>
+        <div className="item">Cost: ${flights.price}</div>
         </div>
       )} 
       </div>

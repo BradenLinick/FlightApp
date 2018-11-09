@@ -12,3 +12,7 @@
   border: 1px solid black;
   padding: 1rem;
 }
+
+button {
+  margin: 1rem;
+}
