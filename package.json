@@ -32,6 +32,7 @@
     "react-fontawesome": "^1.6.1",
     "react-loader": "^2.4.5",
     "react-onclickoutside": "^6.7.1",
+    "react-select": "^2.1.1",
     "reactjs-dropdown-component": "^1.0.5"
   }
 }

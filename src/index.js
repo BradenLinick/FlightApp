@@ -5,6 +5,7 @@ import './index.css';
 import './index.html';
 import Flights from './flights/flights.jsx';
 import Maindrop from "./maindrop/maindrop.jsx";
+import Newdrop from "./newdrop/newdrop.jsx"
 
 
 class App extends React.Component {
@@ -30,7 +31,7 @@ class App extends React.Component {
       <div>
         <h1>Hello React!</h1>
         
-        <Maindrop />
+        <Newdrop />
         <Load />
         <Flights departure={this.state.departure} arrival={this.state.arrival} />
         

@@ -1,15 +1,25 @@
 import React from 'react';
 import Select from 'react-select';
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
+const departure = [
+  { value: 'New York', label: 'New York' },
+  { value: 'Dublin', label: 'Dublin' },
+  { value: 'California', label: 'California' }
 ];
 
+/*const arrival = [
+  { value: 'New York', label: 'New York' },
+  { value: 'Dublin', label: 'Dublin' },
+  { value: 'California', label: 'California' }
+]; */
+
 export default class Newdrop extends React.Component {
-  state = {
+  constructor(props) {
+    super(props)
+  
+  this.state = {
     selectedOption: null,
+  }
   }
   handleChange = (selectedOption) => {
     this.setState({ selectedOption });
@@ -19,11 +29,24 @@ export default class Newdrop extends React.Component {
     const { selectedOption } = this.state;
 
     return (
-      <Select
+
+      <div>
+
+        <Select
         value={selectedOption}
         onChange={this.handleChange}
-        options={options}
+        departure={departure}
+        />
+
+      <Select 
+      value={selectedOption}
+      onChange={this.handleChange}
+      arrival={departure}
       />
+
+
+      </div>
+      
     );
   }
 }
