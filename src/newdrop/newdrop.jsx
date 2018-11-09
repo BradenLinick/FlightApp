@@ -2,51 +2,61 @@ import React from 'react';
 import Select from 'react-select';
 
 const departure = [
-  { value: 'New York', label: 'New York' },
-  { value: 'Dublin', label: 'Dublin' },
-  { value: 'California', label: 'California' }
+  { value: 'NYC', label: 'New York' },
+  { value: 'PRG', label: 'Prague' },
+  { value: 'LND', label: 'London' }
 ];
 
-/*const arrival = [
-  { value: 'New York', label: 'New York' },
-  { value: 'Dublin', label: 'Dublin' },
-  { value: 'California', label: 'California' }
-]; */
+const arrival = [
+  { value: 'Barcelona', label: 'Barcelona' },
+  { value: 'LGW', label: 'Laguardia' },
+  { value: 'Madrid', label: 'Madrid' }
+];
 
 export default class Newdrop extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor(props){
+    super(props);
+
+    this.state = {
+      selectedDep: null,
+      selectedArr: null
+    }
+  }
+
+  handleFlightSearch = (dep, arr) => {
+    fetch(`https://api.skypicker.com/flights?flyFrom=${dep}&to=${arr}&dateFrom=18/11/2018&dateTo=12/12/2018`)
+            .then(resp => resp.json())
+            .then(json => {
+                console.log(json.data);
+                this.setState({flightsArray: json.data})             
+            });
+  }
   
-  this.state = {
-    selectedOption: null,
+  handleChangeDep = (selectedDep) => {
+    this.setState({ selectedDep });
+    console.log(`Option selected:`, selectedDep);
   }
-  }
-  handleChange = (selectedOption) => {
-    this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
+  handleChangeArr = (selectedArr) => {
+    this.setState({ selectedArr });
+    console.log(`Option selected:`, selectedArr);
   }
   render() {
-    const { selectedOption } = this.state;
+    const { selectedDep, selectedArr } = this.state;
 
     return (
-
-      <div>
-
-        <Select
-        value={selectedOption}
-        onChange={this.handleChange}
-        departure={departure}
-        />
-
-      <Select 
-      value={selectedOption}
-      onChange={this.handleChange}
-      arrival={departure}
+      <>
+      <Select
+        value={selectedDep}
+        onChange={this.handleChangeDep}
+        options={departure}
       />
-
-
-      </div>
-      
+      <Select
+        value={selectedArr}
+        onChange={this.handleChangeArr}
+        options={arrival}
+      />
+      <button onClick={() => this.handleFlightSearch(this.state.selectedDep.value, this.state.selectedArr.value)}>Select flights</button>
+      </>
     );
   }
 }
