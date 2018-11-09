@@ -7,7 +7,7 @@ export default class Maindrop extends Component {
     constructor(){
     super()
     this.state = {
-      location: [
+      departure: [
         {
           id: 0,
           title: 'New York',
@@ -51,36 +51,48 @@ export default class Maindrop extends Component {
           key: 'location'
         }
       ],
-      fruit: [
+      arrival: [
         {
           id: 0,
-          title: 'Apple',
+          title: 'New York',
           selected: false,
-          key: 'fruit'
+          key: 'departure'
         },
         {
           id: 1,
-          title: 'Orange',
+          title: 'Dublin',
           selected: false,
-          key: 'fruit'
+          key: 'departure'
         },
         {
           id: 2,
-          title: 'Grape',
+          title: 'California',
           selected: false,
-          key: 'fruit'
+          key: 'departure'
         },
         {
           id: 3,
-          title: 'Pomegranate',
+          title: 'Istanbul',
           selected: false,
-          key: 'fruit'
+          key: 'departure'
         },
         {
           id: 4,
-          title: 'Strawberry',
+          title: 'Izmir',
           selected: false,
-          key: 'fruit'
+          key: 'departure'
+        },
+        {
+          id: 5,
+          title: 'Oslo',
+          selected: false,
+          key: 'departure'
+        },
+        {
+          id: 6,
+          title: 'Zurich',
+          selected: false,
+          key: 'departure'
         }
       ]
     }
@@ -109,16 +121,16 @@ export default class Maindrop extends Component {
         <p>Dropdown menu examples</p>
 
         <div className="wrapper">
-          <Dropmulti
-            titleHelper="Location"
-            title="Select location"
-            list={this.state.location}
-            toggleItem={this.toggleSelected}
+          <Drop
+            title="Departure"
+            list={this.state.departure}
+            resetThenSet={this.resetThenSet}
           />
 
+          
           <Drop
-            title="Select fruit"
-            list={this.state.fruit}
+            title="Arrival"
+            list={this.state.arrival}
             resetThenSet={this.resetThenSet}
           />
         </div>
