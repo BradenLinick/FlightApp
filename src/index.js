@@ -17,6 +17,15 @@ class App extends React.Component {
     }    
   }
 
+  componentDidMount() {        
+    fetch(`https://api.skypicker.com/flights?flyFrom=PRG&to=LGW&dateFrom=18/11/2018&dateTo=12/12/2018`)
+        .then(resp => resp.json())
+        .then(json => {
+            console.log(json.data);
+            this.setState({flightsArray: json.data})             
+        });
+}
+
   handleDepartureChange(e) {
     this.setState({departure: e.target.value})
     console.log(departure);
