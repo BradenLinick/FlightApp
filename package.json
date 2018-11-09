@@ -26,6 +26,7 @@
   "dependencies": {
     "luxon": "^1.5.0",
     "react": "^16.6.0",
-    "react-dom": "^16.6.0"
+    "react-dom": "^16.6.0",
+    "react-loader": "^2.4.5"
   }
 }
