@@ -37,8 +37,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Hello Flightz!</h1>
+      <div className="d-flex flex-column" id="container">
+        <h1>Smart Flights!</h1>
         
         <Newdrop />
         <Load />

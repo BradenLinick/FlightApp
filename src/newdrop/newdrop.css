@@ -15,4 +15,13 @@
 
 button {
   margin: 1rem;
+  max-width: 20rem;
+}
+
+#container {
+  padding: 2rem 10rem;
+}
+
+.select {
+  width: 20rem;
 }

@@ -52,28 +52,33 @@ export default class Newdrop extends React.Component {
 
     return (
       <>
-      <Select
-        value={selectedDep}
-        onChange={this.handleChangeDep}
-        options={departure}
-      />
-      <Select
-        value={selectedArr}
-        onChange={this.handleChangeArr}
-        options={arrival}
-      />
-      <button onClick={() => this.handleFlightSearch(this.state.selectedDep.value, this.state.selectedArr.value)}>Select flights</button>
-      <div className="table">
-      {this.state.flightsArray.map(flights => 
-        <div key={flights.id} className="row">
-        <div className="item">Departure: {flights.flyFrom} </div>
-        <div className="item">Arrival: {flights.flyTo}</div>
-        <div className="item">Departure time: {this.toTime(flights.dTime)}</div>
-        <div className="item">Arrival time (local): {this.toTime(flights.aTime)}</div>
-        <div className="item">Cost: ${flights.price}</div>
+        <div className="d-flex">
+          <Select
+            value={selectedDep}
+            onChange={this.handleChangeDep}
+            options={departure}
+            className="select"
+          />
+          <Select
+            value={selectedArr}
+            onChange={this.handleChangeArr}
+            options={arrival}
+            className="select"
+          />
         </div>
-      )} 
-      </div>
+        <button onClick={() => this.handleFlightSearch(this.state.selectedDep.value, this.state.selectedArr.value)}>Select flights</button>
+        <div className="table">
+          {this.state.flightsArray.map(flights => 
+            <div key={flights.id} className="row">
+            <div className="item">Departure: {flights.flyFrom} </div>
+            <div className="item">Arrival: {flights.flyTo}</div>
+            <div className="item">Departure time: {this.toTime(flights.dTime)}</div>
+            <div className="item">Arrival time (local): {this.toTime(flights.aTime)}</div>
+            <div className="item">Cost: ${flights.price}</div>
+            </div>
+          )} 
+          </div>
+        
       </>
     );
   }
