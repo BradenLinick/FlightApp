@@ -4,7 +4,6 @@ import Load from './loader/loader.jsx';
 import './index.css';
 import './index.html';
 import Flights from './flights/flights.jsx';
-import Maindrop from "./maindrop/maindrop.jsx";
 import Newdrop from "./newdrop/newdrop.jsx"
 
 
