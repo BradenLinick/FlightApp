@@ -10,7 +10,11 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader','css-loader']
+        use: ['style-loader','css-loader'],
+        include: [
+          path.resolve(__dirname, "src"),
+          path.resolve(__dirname, "node_modules/bootstrap")
+        ]
       },
       { 
         test: /\.(png|jpe?g|svg)$/,
@@ -34,6 +38,13 @@ module.exports = {
                outputPath: ''
             }
           }
+        ]
+      },
+      {
+        test: /\.js$/,
+        include: [
+          path.resolve(__dirname, "src"),
+          path.resolve(__dirname, "node_modules/bootstrap")
         ]
       },
       {
